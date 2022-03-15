@@ -1,19 +1,24 @@
 <H1>Eventos</H1>
 <hr>
 
-<form action="" class="form-inline">
+<div  class="form-inline">
   <div class="form-group mb-2">
-    <input  type="text" class="form-control mr-2" placeholder="digite..">
+    <input
+     type="text" class="form-control mr-2"
+      placeholder="digite.."
+      [(ngModel)]="filtroLista">
     <button class="btn btn-outline-success">Buscar</button>
   </div>
-</form>
+</div>
+
+<h3>Filtro: {{filtroLista}}</h3>
 
 <table class="table table-striped">
 <thead class="thead-dark">
   <tr>
     <th>
       <button class="btn btn-outline-light btn-sm" (click)="isCollapsed = !isCollapsed"  type="button" data-bs-toggle="collapse" >
-      {{isCollapsed? 'mostrar': 'Esconder'}}
+      {{isCollapsed? 'Esconder' : 'exibir'}}
     </button>
   </th>
     <th>#</th>
@@ -26,16 +31,16 @@
   </tr>
 </thead>
 <tbody *ngIf="eventos">
-  <tr *ngFor="let item of eventos">
+  <tr *ngFor="let evento of eventosFiltrados">
     <td >
-      <img *ngIf="isCollapsed"  src="/assets/{{item.imageURL}}" width="100px">
+      <img *ngIf="isCollapsed"  src="/assets/{{evento.imageURL}}" width="100px">
     </td>
-    <td>{{item.eventoId}}</td>
-    <td>{{item.tema}}</td>
-    <td>{{item.local}}</td>
-    <td>{{item.dataEvento}}</td>
-    <td>{{item.qydPessoas}}</td>
-    <td>{{item.lote}}</td>
+    <td>{{evento.eventoId}}</td>
+    <td>{{evento.tema}}</td>
+    <td>{{evento.local}}</td>
+    <td>{{evento.dataEvento}}</td>
+    <td>{{evento.qydPessoas}}</td>
+    <td>{{evento.lote}}</td>
     <td>7</td>
   </tr>
 </tbody>
